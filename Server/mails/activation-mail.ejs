@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Activation</title>
+    <style>
+        /* Your email styles here */
+    </style>
+</head>
+<body>
+    <h1>Email Activation</h1>
+    <p>Hello <%= user.username %>,</p>
+    <p>Thank you for registering. Please click the following link to activate your account:</p>
+    <p><a href="<%= activationLink %>">Activate Now</a></p>
+    <p>If you did not request this activation, please ignore this email.</p>
+    <p>Best regards,</p>
+    <p>Your Application Team</p>
+</body>
+</html>
