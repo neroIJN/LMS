@@ -1,19 +1,19 @@
 require('dotenv').config();
-import nodemailer, {Transporter} from "nodemailer";
-import ejs from"ejs";
+import nodemailer, {Transporter} from 'nodemailer';
+import ejs from 'ejs';
 import path from 'path';
 
 interface EmailOptions{
     email:string;
     subject:string;
     template:string;
-    data:{[key:string]:any};
+    data: {[key:string]:any};
 }
 
-const sendMail = async (options:EmailOptions):Promise <void>=>{
-    const transporter : Transporter = nodemailer.createTransporter({
-        host:process.env.SMTP_HOST,
-        port: parseInt (process.env.SMTP_PORT||'587'),
+const sendMail = async (options: EmailOptions):Promise <void> => {
+    const transporter: Transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: parseInt(process.env.SMTP_PORT || '587'),
         service: process.env.SMTP_SERVICE,
         auth:{
             user: process.env.SMTP_MAIL,
@@ -21,20 +21,21 @@ const sendMail = async (options:EmailOptions):Promise <void>=>{
         },
     });
 
-    const{email,subject,template,data} = options;
+    const {email,subject,template,data} = options;
 
-    const templatePath = path.join(__dirname,'../mails',template)
+    // get the pdath to the email template file
+    const templatePath = path.join(__dirname,'../mails',template);
 
-    //Render email template
-
+    // Render the email template with EJS
     const html:string = await ejs.renderFile(templatePath,data);
-    const mailOptions={
+
+    const mailOptions = {
         from: process.env.SMTP_MAIL,
-        to:email,
+        to: email,
         subject,
         html
-
     };
+
     await transporter.sendMail(mailOptions);
 };
 

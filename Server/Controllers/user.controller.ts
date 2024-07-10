@@ -48,11 +48,13 @@ export const registrationUser = CatchAsyncError(async(req:Request,res:Response,n
             });
 
         }catch(error){
+            console.error("Email sending error:", error)
             return next(new ErrorHandler(error.message,400))
         }
         
     }
     catch(error:any){
+        console.error("Registration error:", error)
         return next(new ErrorHandler(error.message,400))
     }
 });
