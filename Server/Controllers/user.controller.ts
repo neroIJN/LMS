@@ -9,8 +9,10 @@ import path from "path";
 import sendMail from "../Utils/sendMail";
 import { accessTokenOptions, refreshTokenOptions, sendToken } from "../Utils/jwt";
 import { redis } from "../Utils/redis";
-import { getUserById } from "../services/user.service";
+import { getAllUsersService, getUserById, updateUserRoleService } from "../services/user.service";
 import cloudinary from "cloudinary";
+import { RedisKey } from "ioredis/built/utils/RedisCommander";
+
 
 // register user
 interface IRegistrationBody {
@@ -374,13 +376,14 @@ interface IUpdateProfilePicture {
   avatar: string;
 }
 
+
 // update profile picture
 export const updateProfilePicture = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { avatar } = req.body as IUpdateProfilePicture;
 
-      const userId = req.user?._id;
+      const userId = req.user?._id as RedisKey;
 
       const user = await userModel.findById(userId).select("+password");
 
@@ -423,6 +426,7 @@ export const updateProfilePicture = CatchAsyncError(
     }
   }
 );
+
 
 // get all users --- only for admin
 export const getAllUsers = CatchAsyncError(
