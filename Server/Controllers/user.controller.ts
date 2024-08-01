@@ -440,6 +440,7 @@ export const getAllUsers = CatchAsyncError(
 );
 
 // update user role --- only for admin
+// update user role --- only for admin
 export const updateUserRole = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -447,7 +448,7 @@ export const updateUserRole = CatchAsyncError(
       const isUserExist = await userModel.findOne({ email });
       if (isUserExist) {
         const id = isUserExist._id;
-        updateUserRoleService(res,id, role);
+        updateUserRoleService(res, id as string, role);
       } else {
         res.status(400).json({
           success: false,

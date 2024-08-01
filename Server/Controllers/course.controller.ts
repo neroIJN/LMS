@@ -9,7 +9,7 @@ import mongoose from "mongoose";
 import path from "path";
 import ejs from "ejs";
 import sendMail from "../Utils/sendMail";
-import NotificationModel from "../models/notification.Model";
+import NotificationModel from "../models/notificationModel";
 import axios from "axios";
 
 // upload course
