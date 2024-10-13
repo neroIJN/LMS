@@ -12,8 +12,8 @@ const Page:FC<Props> = (props)=>{
     <div>
       <Heading 
       title="EduFlow"
-      description="Edu Flow is a platform that provides...."
-      keywords="Programming ,MERN , ML"
+      description="EEduFlow is a platform offering interactive learning experiences. It enables seamless course management, collaboration, and assessments, making education engaging and effective for both students and teachers."
+      keywords="Programming ,MERN , ML, Redux"
       />
       <Header
       open={open}
