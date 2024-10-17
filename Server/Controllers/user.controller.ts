@@ -246,7 +246,7 @@ export const updateAccessToken = CatchAsyncError(
   }
 );
 
-// get user info
+
 // get user info
 export const getUserInfo = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {

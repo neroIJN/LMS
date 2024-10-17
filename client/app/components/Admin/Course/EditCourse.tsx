@@ -8,7 +8,7 @@ import CoursePreview from "./CoursePreview";
 import {
   useEditCourseMutation,
   useGetAllCoursesQuery,
-} from "../../../../redux/features/courses/coursesApi";
+} from "../../../../Redux/features/courses/coursesApi";
 import { toast } from "react-hot-toast";
 import { redirect } from "next/navigation";
 

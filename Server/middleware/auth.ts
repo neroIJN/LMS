@@ -1,7 +1,7 @@
-import { Request,Response,NextFunction } from "express";
+import { Request, Response, NextFunction } from "express";
 import { CatchAsyncError } from "./catchAsyncErrors";
 import ErrorHandler from "../Utils/ErrorHandler";
-import jwt, {JwtPayload} from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 import { redis } from "../Utils/redis";
 import { updateAccessToken } from "../Controllers/user.controller";
 
@@ -20,7 +20,6 @@ export const isAutheticated = CatchAsyncError(
       return next(new ErrorHandler("access token is not valid", 400));
     }
 
-  
     if (decoded.exp && decoded.exp <= Date.now() / 1000) {
       try {
         await updateAccessToken(req, res, next);

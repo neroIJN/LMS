@@ -102,7 +102,7 @@ const Header: FC<Props> = ({ activeItem, setOpen, route, open, setRoute }) => {
             </div>
             <div className="flex items-center">
               <NavItems activeItem={activeItem} isMobile={false} />
-              <ThemeSwitcher />
+              <ThemeSwtitcher />
               {/* only for mobile */}
               <div className="800px:hidden">
                 <HiOutlineMenuAlt3
